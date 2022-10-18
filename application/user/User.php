@@ -1,20 +1,33 @@
 <?php
-class User {
-    function __construct($db) {
+class User
+{
+    function __construct($db)
+    {
         $this->db = $db;
     }
 
-    function login($login, $password) {
-        if ($login === 'vasya' && $password === '123') {
+    function login($login, $password)
+    {
+        $user = $this->db->getUser($login);
+        if ($user && $password === $user->password) {
             $token = md5(rand());
-            return array(
-                'name' => 'Vasya Pupkin',
-                'token' => $token
-            );
+            $this->db->updateToken($user->id, $token);
+            return array('name' => $user->name, 'token' => $token);
         }
     }
 
-    function getUser($token) {
-        return !!$token;
+    function getUser($token)
+    {
+        return !!$this->db->getUserByToken($token);
+    }
+
+    function logout($token)
+    {
+        $user = $this->db->getUserByToken($token);
+        if ($user) {
+            $this->db->updateToken($user->id, '');
+            $user = $this->db->getUser($user->login);
+            return array('token' => $user->token);
+        }
     }
 }

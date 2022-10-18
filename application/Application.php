@@ -25,4 +25,9 @@ class Application {
             );
         }
     }
+    function logout($params){
+        if ($params['token']){
+            return $this->user->logout($params['token']);
+        }
+    }
 }

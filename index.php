@@ -14,6 +14,8 @@ function router($params)
                 return $app->login($params);
             case 'convert':
                 return $app->convert($params);
+            case 'logout':
+                return $app->logout($params);
                 //...
         }
     }
