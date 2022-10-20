@@ -16,7 +16,10 @@ function router($params)
                 return $app->convert($params);
             case 'logout':
                 return $app->logout($params);
-                //...
+            case 'sendMessage':
+                return $app->addMessage($params);
+            case 'getChat':
+                return $app->getChat($params);
         }
     }
     return false;

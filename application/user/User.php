@@ -30,4 +30,20 @@ class User
             return array('token' => $user->token);
         }
     }
+
+    function sendMessage($token, $message)
+    {
+        $user = $this->db->getUserByToken($token);
+        if ($user) {
+            return $this->db->addMessage($user->id, $message);
+        }
+    }
+
+    function getChat($token)
+    {
+        $user = $this->db->getUserByToken($token);
+        if ($user) {
+            return $this->db->getChat();
+        }
+    }
 }

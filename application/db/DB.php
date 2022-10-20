@@ -53,4 +53,23 @@ class DB
         $this->db->query($query);
         return true;
     }
+
+    public function getUsers()
+    {
+        $query = 'SELECT * FROM users';
+        return $this->getArray($query);
+    }
+
+    public function getChat()
+    {
+        $query = 'SELECT chat.message, chat.date, users.name FROM chat, users WHERE chat.id = users.id';
+        return $this->getArray($query);
+    }
+
+    public function addMessage($id, $message)
+    {
+        $query = 'INSERT INTO `chat` (id, `message`) VALUES ( ' . $id . ' , "' . $message . '")';
+        $this->db->query($query);
+        return ('Send!');
+    }
 }
