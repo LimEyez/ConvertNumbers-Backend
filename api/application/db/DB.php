@@ -60,16 +60,27 @@ class DB
         return $this->getArray($query);
     }
 
-    public function getChat()
+    public function getMessages()
     {
         $query = 'SELECT chat.message, chat.date, users.name FROM chat, users WHERE chat.id = users.id';
         return $this->getArray($query);
     }
 
-    public function addMessage($id, $message)
+    public function sendMessage($id, $message)
     {
         $query = 'INSERT INTO `chat` (id, `message`) VALUES ( ' . $id . ' , "' . $message . '")';
         $this->db->query($query);
-        return ('Send!');
+        return true;
+    }
+
+    public function getChatHash() {
+        $query = 'SELECT chatHash FROM statuses';
+        return $this->db->query($query)->fetchObject();
+    }
+
+    public function setChatHash($hash) {
+        $query = 'UPDATE statuses SET chatHash="' . $hash . '"';
+        $this->db->query($query);
+        return true;
     }
 }

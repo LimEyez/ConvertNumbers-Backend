@@ -1,5 +1,6 @@
 <?php
 header("Access-Control-Allow-Origin: http://localhost:3000");
+header('Content-Type: text/html; charset=utf-8');
 error_reporting(-1);
 
 require('application/Application.php');
@@ -17,9 +18,9 @@ function router($params)
             case 'logout':
                 return $app->logout($params);
             case 'sendMessage':
-                return $app->addMessage($params);
-            case 'getChat':
-                return $app->getChat($params);
+                return $app->sendMessage($params);
+            case 'getMessages':
+                return $app->getMessages($params);
         }
     }
     return false;
