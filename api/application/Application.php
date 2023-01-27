@@ -19,6 +19,7 @@ class Application
             return $this->user->login($params['login'], $params['password']);
         }
     }
+<<<<<<< HEAD
     function registration($params)
     {
         if($params['login'] && $params['name'] && $params['password1'] && $params['password2'])
@@ -26,6 +27,8 @@ class Application
                 return $this->user->addUser($params['login'], $params['name'], $params['password1'], $params['password2']);
         }
     }
+=======
+>>>>>>> b7d932a3cef7436512fedba2c3a1cab53fbec1e7
     function logout($params)
     {
         if ($params['token']) {

@@ -13,8 +13,11 @@ function router($params)
         switch ($method) {
             case 'login':
                 return $app->login($params);
+<<<<<<< HEAD
             case 'registration':
                 return $app-> registration($params);
+=======
+>>>>>>> b7d932a3cef7436512fedba2c3a1cab53fbec1e7
             case 'convert':
                 return $app->convert($params);
             case 'logout':
