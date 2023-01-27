@@ -35,7 +35,6 @@ class DB
         return $result;
     }
 
-<<<<<<< HEAD
     public function addUser($login, $name, $password)
     {
         $query = 'INSERT INTO users (`login`, `password`, `name`) VALUES ("' . $login . '", "' . $password . '", "' . $name . '")';
@@ -43,8 +42,6 @@ class DB
         return array('message' => "Пользователь добавлен!", 'status' => false);
     }
 
-=======
->>>>>>> b7d932a3cef7436512fedba2c3a1cab53fbec1e7
     public function getUser($login)
     {
         $query = 'SELECT * FROM users WHERE login ="' . $login . '"';

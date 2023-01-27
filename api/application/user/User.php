@@ -5,10 +5,6 @@ class User
     {
         $this->db = $db;
     }
-<<<<<<< HEAD
-=======
-
->>>>>>> b7d932a3cef7436512fedba2c3a1cab53fbec1e7
     function login($login, $password)
     {
         $user = $this->db->getUser($login);
@@ -18,7 +14,6 @@ class User
             return array('name' => $user->name, 'token' => $token);
         }
     }
-<<<<<<< HEAD
     function addUser($login, $name, $password1, $password2)
     {
         $user = $this->db->getUser($login);
@@ -33,9 +28,6 @@ class User
             return array('message' => "Пароли не совпадают!", 'status' => true);
         }
     }
-=======
-
->>>>>>> b7d932a3cef7436512fedba2c3a1cab53fbec1e7
     function getUser($token)
     {
         return $this->db->getUserByToken($token);
